@@ -1,6 +1,6 @@
-from typing import Optional
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from typing import Annotated, Optional
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
+from pydantic import field_validator
 import os
 from pathlib import Path
 
@@ -51,13 +51,29 @@ class Settings(BaseSettings):
     AUDIO_STORAGE_DIR: str = str(ROOT_DIR / "backend" / "temp_audio")
 
     # CORS
-    CORS_ORIGINS: list[str] = [
+    # Railway may supply this as a comma-separated string or JSON-style list.
+    CORS_ORIGINS: Annotated[list[str], NoDecode] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:8000",
-        "http://127.0.0.1:8000"
+        "http://127.0.0.1:8000",
+        "https://cooperative-mitra-flame.vercel.app"
     ]
 
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, value):
+        if value is None:
+            origins = []
+        elif isinstance(value, str):
+            origins = [origin.strip() for origin in value.split(",") if origin.strip()]
+        else:
+            origins = list(value)
+        production_origin = "https://cooperative-mitra-flame.vercel.app"
+        if production_origin not in origins:
+            origins.append(production_origin)
+        return origins
 settings = Settings()
 
 # Ensure directories exist

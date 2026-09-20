@@ -28,6 +28,10 @@ class VoiceService:
         if not text or not text.strip():
             return None
 
+        if not settings.ENABLE_EDGE_TTS:
+            logger.info("Edge TTS is disabled; returning text-only response.")
+            return None
+
         # Truncate text for TTS to first 500 characters to keep audio response snappy
         clean_text = text.replace("*", "").replace("#", "").strip()[:500]
 
@@ -39,6 +43,8 @@ class VoiceService:
             import edge_tts
             communicate = edge_tts.Communicate(clean_text, voice)
             await communicate.save(output_path)
+            if not os.path.isfile(output_path) or os.path.getsize(output_path) == 0:
+                raise RuntimeError("Edge TTS did not create an audio file")
             logger.info(f"Generated TTS audio: {filename} for lang {language}")
             return filename
         except Exception as e:

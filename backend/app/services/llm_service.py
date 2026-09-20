@@ -329,6 +329,21 @@ CONTENT:
             )
 
         # ====================================================
+        # Railway has no local Ollama service. Keep the deterministic grounded
+        # fallback rather than attempting a localhost connection in production.
+        if settings.ENVIRONMENT.lower() == "production":
+            logger.info("Gemini was unavailable; skipping localhost Ollama in production.")
+            grounded_reply = self._generate_grounded_fallback(
+                prompt=prompt,
+                retrieved_chunks=retrieved_chunks,
+                language=language,
+                has_placeholder=has_placeholder,
+            )
+            return (
+                grounded_reply,
+                "grounded_rule_engine",
+                "VERIFIED" if not has_placeholder else "PARTIALLY_VERIFIED",
+            )
         # PROVIDER 2: LOCAL OLLAMA
         # ====================================================
 

@@ -11,6 +11,7 @@ from backend.app.config import settings
 from backend.app.core.logging_config import logger
 from backend.app.database import engine, Base
 from backend.app.seed import seed_database
+from backend.app.services.rag_bootstrap import ensure_knowledge_base
 from backend.app.routers.health import router as health_router
 from backend.app.routers.auth import router as auth_router
 from backend.app.routers.schemes import router as schemes_router
@@ -30,11 +31,15 @@ async def lifespan(app: FastAPI):
         raise RuntimeError("A strong SECRET_KEY must be configured for production")
     try:
         Base.metadata.create_all(bind=engine)
-        if settings.ENVIRONMENT.lower() != "production":
-            seed_database()
+        # This seeds only idempotent public reference data, never accounts.
+        seed_database()
         logger.info("Database initialized and verified.")
     except Exception as e:
         logger.error(f"Database initialization warning: {e}")
+
+    # Generated Chroma artifacts are excluded from Git; build from versioned
+    # source records only when the deployed collection is empty.
+    ensure_knowledge_base()
 
     yield
 

@@ -1,6 +1,6 @@
 function getBaseUrl(): string {
   if (process.env.NEXT_PUBLIC_API_BASE_URL) {
-    return process.env.NEXT_PUBLIC_API_BASE_URL;
+    return process.env.NEXT_PUBLIC_API_BASE_URL.replace(/\/+$/, "");
   }
   if (typeof window !== "undefined" && window.location.hostname) {
     return `http://${window.location.hostname}:8000/api/v1`;
@@ -184,7 +184,7 @@ class ApiClient {
     if (pathOrUrl.startsWith("http")) return pathOrUrl;
     // Strip redundant prefix if needed
     const clean = pathOrUrl.startsWith("/api/v1") ? pathOrUrl : `/api/v1${pathOrUrl}`;
-    const base = getBaseUrl().replace("/api/v1", "");
+    const base = getBaseUrl().replace(/\/api\/v1\/?$/, "");
     return `${base}${clean}`;
   }
 }
