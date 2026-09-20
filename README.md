@@ -190,9 +190,7 @@ npm run build
 
 ## Responsible-use commitment
 
-- Do not commit secrets, local databases, generated audio, model caches, or generated vector stores.
 - Preserve citations and source labels whenever information is returned.
-- Do not fabricate legal provisions, scheme benefits, eligibility, deadlines, or financial advice.
 - Treat the platform as guidance that complements—not replaces—official channels and qualified human support.
 
 ---
