@@ -1,0 +1,72 @@
+[
+  {
+    "doc_id": "financial_literacy_loans_interest_v1",
+    "title": "Understanding loans, interest and EMI",
+    "category": "FINANCIAL_LITERACY",
+    "topic": "LOANS_INTEREST_EMI",
+    "source_type": "INTERNAL_EDUCATIONAL",
+    "source_status": "VERIFIED_INTERNAL",
+    "official_url": "",
+    "language": "en",
+    "document_type": "EDUCATIONAL_GUIDE",
+    "version": "1.0",
+    "state": "NATIONAL",
+    "content": "Educational guide: A loan is money borrowed under agreed terms. Interest is the cost charged for using borrowed money. Simple interest is calculated on the original principal; compound interest adds accumulated interest to the amount on which later interest is calculated. An EMI is a scheduled periodic repayment that usually includes principal and interest. Before accepting a loan, read the lender's sanctioned terms, interest method, fees, repayment schedule, security requirements and consequences of missed payments. This is general financial education, not a loan recommendation or approval."
+  },
+  {
+    "doc_id": "financial_literacy_credit_cooperative_v1",
+    "title": "Cooperative credit and Kisan Credit Card",
+    "category": "FINANCIAL_LITERACY",
+    "topic": "COOPERATIVE_CREDIT_KCC",
+    "source_type": "INTERNAL_EDUCATIONAL",
+    "source_status": "VERIFIED_INTERNAL",
+    "official_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "language": "en",
+    "document_type": "EDUCATIONAL_GUIDE",
+    "version": "1.0",
+    "state": "NATIONAL",
+    "content": "Educational guide: Cooperative credit is credit offered through cooperative institutions under their applicable policies and regulations. A Kisan Credit Card is a banking credit facility for eligible farmers; it is not a payment card issued by this application. Eligibility, documents, credit limits, repayment conditions and interest are decided under current scheme and bank rules. Never share a password, PIN, OTP, card number or bank-login credential while seeking help."
+  },
+  {
+    "doc_id": "financial_literacy_savings_insurance_v1",
+    "title": "Savings and insurance basics",
+    "category": "FINANCIAL_LITERACY",
+    "topic": "SAVINGS_INSURANCE",
+    "source_type": "INTERNAL_EDUCATIONAL",
+    "source_status": "VERIFIED_INTERNAL",
+    "official_url": "https://pmfby.gov.in/guidelines",
+    "language": "en",
+    "document_type": "EDUCATIONAL_GUIDE",
+    "version": "1.0",
+    "state": "NATIONAL",
+    "content": "Educational guide: Savings are money set aside for future needs or emergencies. Insurance is a contract that may provide protection against specified risks, subject to its policy terms, exclusions and claim process. Crop insurance should be understood from the applicable official notification and insurance policy. Do not assume that every loss is covered; verify the insured crop, area, season, risks, reporting steps and claim requirements in the current official records."
+  },
+  {
+    "doc_id": "financial_literacy_digital_safety_v1",
+    "title": "Digital payment safety and fraud awareness",
+    "category": "FINANCIAL_LITERACY",
+    "topic": "DIGITAL_PAYMENT_SAFETY",
+    "source_type": "INTERNAL_EDUCATIONAL",
+    "source_status": "VERIFIED_INTERNAL",
+    "official_url": "https://www.rbi.org.in/",
+    "language": "en",
+    "document_type": "EDUCATIONAL_GUIDE",
+    "version": "1.0",
+    "state": "NATIONAL",
+    "content": "Educational guide: Keep your PIN, password, OTP, card details and banking login private. A genuine institution should not need your OTP or PIN to help you receive money. Verify a caller, message, QR code, app or payment request through an independently known official channel. Do not install unknown screen-sharing apps or click unexpected links. If you suspect fraud, contact your bank through its official channel promptly and use the relevant official reporting channel. This application never asks for banking credentials and cannot make payments or access accounts."
+  },
+  {
+    "doc_id": "financial_literacy_credit_score_documents_v1",
+    "title": "Credit score and financial documentation basics",
+    "category": "FINANCIAL_LITERACY",
+    "topic": "CREDIT_DOCUMENTS",
+    "source_type": "INTERNAL_EDUCATIONAL",
+    "source_status": "VERIFIED_INTERNAL",
+    "official_url": "",
+    "language": "en",
+    "document_type": "EDUCATIONAL_GUIDE",
+    "version": "1.0",
+    "state": "NATIONAL",
+    "content": "Educational guide: A credit score is a numerical assessment used by lenders as one input in credit decisions; each lender uses its own policies and checks. Keep copies of applications, sanction letters, repayment schedules, receipts and relevant identity or land documents secure. A lender decides the documents it needs and whether to approve credit. Do not send sensitive documents to unverified people or services."
+  }
+]

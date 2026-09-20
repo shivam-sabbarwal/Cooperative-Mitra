@@ -1,0 +1,17 @@
+DOCUMENT_ID: PMAY_U_2_GUIDELINES_EN
+
+TITLE: Pradhan Mantri Awas Yojana Urban 2.0 Scheme Guidelines
+
+SCHEME: PMAY-U 2.0
+
+CATEGORY: housing
+
+MINISTRY: Ministry of Housing and Urban Affairs
+
+LANGUAGE: en
+
+SOURCE_STATUS: OFFICIAL
+
+SOURCE_URL: https://www.pmay-urban.gov.in/guideline
+
+DOCUMENT_URL: https://pmay-urban.gov.in/uploads/guidelines/Operational-Guidelines-of-PMAY-U-2.pdf

@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+ENV/
+
+# Environment variables (local credentials must never be committed)
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+node_modules/
+.next/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ChromaDB & Vector Store
+nlp-rag/knowledge_base/chroma_db/*
+!nlp-rag/knowledge_base/chroma_db/.gitkeep
+chroma_db/
+nlp-rag/knowledge_base/processed/
+
+# Logs & Audio files
+*.log
+logs/
+backend/logs/
+*.mp3
+*.wav
+*.webm
+temp_audio/
+backend/temp_audio/
+
+# SQLite & local DBs
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test, type-checking, and coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.tsbuildinfo
+
+# Internal development documents; retain public deployment documentation.
+*_PRD.md
+*PRD*.md
+# Private keys / certificates
+*.pem
+*.key
+*.p12
+*.pfx

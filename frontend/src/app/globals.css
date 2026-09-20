@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8faf9;
+  --foreground: #17201b;
+
+  --coop-50: #f0f7f3;
+  --coop-100: #dceee4;
+  --coop-200: #bddcca;
+  --coop-300: #91c2a5;
+  --coop-400: #5da47b;
+  --coop-500: #39865c;
+  --coop-600: #286b47;
+  --coop-700: #20553b;
+  --coop-800: #1b4431;
+  --coop-900: #17392a;
+
+  --navy-700: #18364a;
+  --navy-800: #122c3d;
+  --navy-900: #0d2230;
+  /* Kept in one place so fixed mobile controls clear the navigation. */
+  --mobile-nav-height: 60px;
+}
+
+@media (max-width: 767px) {
+  .mobile-nav-safe-bottom {
+    padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* --------------------------------------------------
+   Government-style utility classes
+-------------------------------------------------- */
+
+.container-public {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.section-public {
+  padding: 64px 0;
+}
+
+.section-public-sm {
+  padding: 40px 0;
+}
+
+.section-title {
+  color: #17201b;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-description {
+  max-width: 720px;
+  margin-top: 10px;
+  color: #64706a;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------
+   Formal links
+-------------------------------------------------- */
+
+.public-link {
+  color: var(--coop-700);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.public-link:hover {
+  color: var(--coop-900);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --------------------------------------------------
+   Service cards
+-------------------------------------------------- */
+
+.service-card {
+  border: 1px solid #dce4df;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.service-card:hover {
+  border-color: #b9d1c1;
+  box-shadow: 0 8px 24px rgba(23, 57, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------
+   Formal government/public notice styling
+-------------------------------------------------- */
+
+.notice-row {
+  border-bottom: 1px solid #e3e8e5;
+  padding: 16px 0;
+}
+
+.notice-row:last-child {
+  border-bottom: none;
+}
+
+.notice-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 1px solid #d4e0d9;
+  background: #f2f7f4;
+  color: var(--coop-700);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------
+   Buttons
+-------------------------------------------------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--coop-700);
+  background: var(--coop-700);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  border-color: var(--coop-800);
+  background: var(--coop-800);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid #cbd6d0;
+  background: #ffffff;
+  color: #244334;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #9fb5a7;
+  background: #f4f7f5;
+}
+
+/* --------------------------------------------------
+   Form controls
+-------------------------------------------------- */
+
+.public-input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #cbd6d0;
+  background: #ffffff;
+  padding: 10px 12px;
+  color: #17201b;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.public-input:focus {
+  border-color: var(--coop-600);
+  box-shadow: 0 0 0 3px rgba(40, 107, 71, 0.1);
+}
+
+/* --------------------------------------------------
+   Accessibility
+-------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 9999;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #17392a;
+  border: 1px solid #b8c9bf;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* --------------------------------------------------
+   Scrollbar
+-------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2ef;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b5c4bb;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8fa497;
+}
+
+/* --------------------------------------------------
+   Selection
+-------------------------------------------------- */
+
+::selection {
+  background: #d8eadf;
+  color: #17392a;
+}
+
+/* --------------------------------------------------
+   Mobile
+-------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .container-public {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .section-public {
+    padding: 44px 0;
+  }
+
+  .section-public-sm {
+    padding: 32px 0;
+  }
+}
+
+/* --------------------------------------------------
+   Reduced motion
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

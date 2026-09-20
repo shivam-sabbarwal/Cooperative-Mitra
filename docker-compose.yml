@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - API_V1_PREFIX=/api/v1
+      - CORS_ORIGINS=["http://localhost:3000"]
+      - SECRET_KEY=${SECRET_KEY:?Set SECRET_KEY before starting production services}
+    volumes:
+      - backend_data:/app/data
+      # Chroma must survive container replacement; Docker initializes this
+      # named volume from the indexed collection on its first creation.
+      - chroma_data:/app/nlp-rag/knowledge_base/chroma_db
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        BACKEND_INTERNAL_URL: http://backend:8000
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=/api/v1
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:3000/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  backend_data:
+  chroma_data:
