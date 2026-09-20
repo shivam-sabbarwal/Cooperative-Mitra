@@ -154,13 +154,6 @@ npm run dev
 - Health check: `http://localhost:8000/health`
 - API documentation: `http://localhost:8000/docs`
 
-## Production configuration
-
-- Set Vercel `NEXT_PUBLIC_API_BASE_URL` to `https://cooperative-mitra-production.up.railway.app/api/v1`.
-- The backend permits the official Vercel production origin and retains localhost development origins.
-- Configure a strong production `SECRET_KEY`, database URL, and Gemini API key through deployment environment variables.
-- Docker builds the existing Chroma collection before the backend starts and fails if the collection is empty.
-- Public scheme and legal reference data are idempotently seeded at backend startup; user accounts are never seeded.
 
 ## API overview
 
