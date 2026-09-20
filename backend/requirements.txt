@@ -26,3 +26,4 @@ edge-tts>=6.1.10
 google-genai>=0.1.0
 
 python-dotenv>=1.0.1
+numpy<2
