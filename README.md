@@ -7,6 +7,16 @@ Cooperative Mitra is a multilingual, source-grounded digital companion for coope
 Built for **Smart India Hackathon**, the platform combines a simple mobile-first PWA experience with a responsible AI pipeline: retrieve verified context first, answer in the user's language, cite the source when available, and safely say when an answer cannot be verified.
 
 > **Important:** Cooperative Mitra is an informational platform, not an official government service. Legal, financial, eligibility, and scheme information should be verified with the relevant government department, cooperative authority, PACS office, or official source before important decisions are made.
+## Live cloud deployment
+
+Cooperative Mitra is available as a live cloud deployment for demonstration and evaluation.
+
+| Service | Availability |
+| --- | --- |
+| Public web application | [Open Cooperative Mitra](https://cooperative-mitra-flame.vercel.app) |
+| Backend deployment | [Railway service](https://cooperative-mitra-production.up.railway.app) |
+
+The web application is hosted on Vercel, while the backend runs on Railway. The public experience connects to the deployed backend securely through deployment configuration; credentials, keys, and internal service details are not exposed in this repository.
 
 ## The problem
 
@@ -134,9 +144,9 @@ The knowledge base is built from the tracked source records using `nlp-rag/inges
 └── README.md
 ```
 
-## Local setup
+## Run locally
 
-Create a local `.env` from `.env.example`, populate the required values locally, and never commit it.
+Create a local `.env` from `.env.example`, populate required values locally, and never commit it.
 
 ```powershell
 cd <project-root>
@@ -149,34 +159,12 @@ npm install
 npm run dev
 ```
 
-- Frontend: `http://localhost:3000`
-- Backend: `http://localhost:8000`
-- Health check: `http://localhost:8000/health`
-- API documentation: `http://localhost:8000/docs`
+## Production deployment
 
-## Production configuration
-
-- Set Vercel `NEXT_PUBLIC_API_BASE_URL` to `https://cooperative-mitra-production.up.railway.app/api/v1`.
-- The backend permits the official Vercel production origin and retains localhost development origins.
-- Configure a strong production `SECRET_KEY`, database URL, and Gemini API key through deployment environment variables.
+- The public web application is deployed on Vercel and the backend is deployed on Railway.
+- Deployment credentials and runtime configuration are managed through the cloud platforms and are never committed.
 - Docker builds the existing Chroma collection before the backend starts and fails if the collection is empty.
-- Public scheme and legal reference data are idempotently seeded at backend startup; user accounts are never seeded.
-
-## API overview
-
-All endpoints below are under `/api/v1`, except the root `/health` alias.
-
-| Method | Endpoint | Purpose | Auth |
-| --- | --- | --- | --- |
-| GET | `/health` | Service health | No |
-| POST | `/auth/register`, `/auth/login` | Registration and sign-in | No |
-| GET / PUT | `/auth/me` | Signed-in profile | Yes |
-| POST | `/chat` | Grounded multilingual conversation | Optional |
-| GET | `/chat/sessions`, `/chat/sessions/{session_uuid}` | Conversation history | Yes |
-| GET / POST | `/schemes`, `/schemes/check-eligibility` | Scheme discovery and eligibility | No |
-| GET | `/legal/acts`, `/legal/sections/search` | Legal registry and search | No |
-| POST / GET | `/grievances`, `/grievances/track/{ticket_number}` | Submit and track grievances | Mixed |
-| POST | `/voice/tts`, `/voice/stt` | Text-to-speech and speech input | No |
+- Public scheme and legal reference data are seeded idempotently at backend startup; user accounts are never seeded.
 
 ## Testing
 
