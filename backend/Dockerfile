@@ -19,10 +19,15 @@ RUN pip install --no-cache-dir \
 
 RUN mkdir -p /app/data/audio
 
-COPY backend/ /app/backend/
+# Build the ignored Chroma artifacts from the tracked sources. Keep these
+# inputs in their own layers so dependency/model/index work remains cached
+# until the ingestion script or knowledge sources change.
+COPY nlp-rag/ingestion.py /app/nlp-rag/ingestion.py
+COPY nlp-rag/knowledge_base/raw/ /app/nlp-rag/knowledge_base/raw/
+RUN python /app/nlp-rag/ingestion.py \
+    && python -c "import chromadb; c = chromadb.PersistentClient(path='/app/nlp-rag/knowledge_base/chroma_db').get_collection('cooperative_knowledge'); count = c.count(); print(f'cooperative_knowledge records: {count}'); assert count > 0, 'cooperative_knowledge is empty after ingestion'"
 
-# Persisted RAG knowledge base
-COPY nlp-rag/ /app/nlp-rag/
+COPY backend/ /app/backend/
 
 ENV PYTHONPATH=/app
 ENV PORT=8000

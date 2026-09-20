@@ -1,0 +1,12 @@
+.git
+.env
+.env.*
+frontend/node_modules
+frontend/.next
+backend/temp_audio
+backend/logs
+*.db
+*.sqlite
+*.sqlite3
+nlp-rag/knowledge_base/chroma_db
+nlp-rag/knowledge_base/processed
