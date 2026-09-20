@@ -124,7 +124,7 @@ pytest
 - Never commit `.env`, API keys, database copies, generated audio, Chroma indexes, caches, or dependency folders.
 - Preserve source citations and do not fabricate government, legal, scheme, or financial information.
 - Keep frontend API contracts synchronized with backend routes and update this README when architecture changes.
-- Git operations are performed manually by the project owner.
+
 
 ## Repository Hygiene
 
