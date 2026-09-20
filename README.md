@@ -109,7 +109,8 @@ flowchart TD
 5. Gemini produces the primary grounded answer in production.
 6. Ollama remains a local-development fallback only. If a provider or reliable context is unavailable, a deterministic safe fallback is returned.
 
-The knowledge base is built from the tracked source records using `nlp-rag/ingestion.py`. In Docker deployments, ingestion happens at image build time; application startup only loads the already-populated collection.
+The knowledge base is built from the tracked source records using
+lp-rag/ingestion.py`. In Docker deployments, ingestion happens at image build time; application startup only loads the already-populated collection.
 
 ## Technology stack
 
@@ -178,9 +179,7 @@ npm run build
 
 ## Responsible-use commitment
 
-- Do not commit secrets, local databases, generated audio, model caches, or generated vector stores.
 - Preserve citations and source labels whenever information is returned.
-- Do not fabricate legal provisions, scheme benefits, eligibility, deadlines, or financial advice.
 - Treat the platform as guidance that complements—not replaces—official channels and qualified human support.
 
 ---
