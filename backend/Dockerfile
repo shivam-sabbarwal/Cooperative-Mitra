@@ -8,12 +8,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt /app/backend/requirements.txt
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+
+# Install CPU-only PyTorch to avoid unnecessary NVIDIA/CUDA packages
+RUN pip install --no-cache-dir \
+    --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.2.2+cpu
+
+RUN pip install --no-cache-dir \
+    -r /app/backend/requirements.txt
+
 RUN mkdir -p /app/data/audio
 
 COPY backend/ /app/backend/
 
-# The retrieval service reads this persisted collection at runtime.
+# Persisted RAG knowledge base
 COPY nlp-rag/ /app/nlp-rag/
 
 ENV PYTHONPATH=/app
